@@ -35,10 +35,10 @@ void bubble_sort_special(Node* head) {
                                 current->value = next_val;
                                 current->next->value = current_val;
 
-                                if (current_val > next_val){
+                                if (current_val < next_val){
                                         cout << "Swap " << current_val << " with " << next_val << endl;
                                 } else {
-                                        cout << "Swap " << current_val << " with " << current_val << endl;
+                                        cout << "Swap " << next_val << " with " << current_val << endl;
                                 }
                         }
                         current = current->next;
