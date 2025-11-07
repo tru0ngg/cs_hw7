@@ -7,7 +7,7 @@ struct Node {
     Node* next = nullptr;
 };
 
-bool should_swap(int x, int y){
+bool is_less_than(int x, int y){
         if (x % 2 != 0 && y % 2 == 0){
                 return true;
         } else if (x % 2 == 0 && y % 2 !=0){
@@ -19,21 +19,18 @@ bool should_swap(int x, int y){
 
 void bubble_sort_special(Node* head) {
     // for you to fill in
-        Node* prt = head;
-        int N = 0;
-        while ( prt != nullptr && prt->next != nullptr){
-                prt = prt->next;
-                N++;
-        }
-        for (int i = 0; i < N-1; i++){
+        bool swapped = true;
+        while (swapped) {
+                swapped = false;
                 Node* current = head;
-                while (current != nullptr && current->next != nullptr){
-                        if (should_swap(current->value, current->next->value)){
+                while (current->next != nullptr){
+                        if (is_less_than(current->value, current->next->value)){
                                 int temp = current->value;
                                 current->value = current->next->value;
                                 current->next->value = temp;
 
                                 cout << "Swap " << current->next->value << " with " << current->value << endl;
+                                swapped = true;
                         }
                         current = current->next;
                 }
